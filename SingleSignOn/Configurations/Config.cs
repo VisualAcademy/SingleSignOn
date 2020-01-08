@@ -28,20 +28,30 @@ namespace SingleSignOn.Configurations
                 // TODO: 
             };
         }
-
+        
         public static IEnumerable<Client> GetClients()
         {
             return new Client[]
             {
                 new Client
-                { 
+                {
                     ClientId = "73b933f9-821e-47df-866d-ef97d24c7506",
-                    ClientName = "SingleSignOn.Blazor",
-                    AllowedGrantTypes = GrantTypes.Hybrid,
+                    ClientName = "SingleSignOn.Mvc",
+                    AllowedGrantTypes = GrantTypes.Implicit,
                     AllowedScopes = { "openid", "profile", IdentityServerConstants.StandardScopes.Email },
                     ClientSecrets = new List<Secret>() { new Secret("73b933f9-821e-47df-866d-ef97d24c7506".Sha256()) },
-                    RedirectUris = { "https://localhost:XXXX/signin-oidc" },
-                    PostLogoutRedirectUris = new List<string> { "https://localhost:XXXX" },
+                    RedirectUris = { "https://localhost:44302/signin-oidc" },
+                    PostLogoutRedirectUris = new List<string> { "https://localhost:44302/" },
+                },
+                new Client
+                {
+                    ClientId = "6a297776-c6ae-49c6-8cae-e6ef10a92cf0",
+                    ClientName = "SingleSignOn.Blazor",
+                    AllowedGrantTypes = GrantTypes.Implicit,
+                    AllowedScopes = { "openid", "profile", IdentityServerConstants.StandardScopes.Email },
+                    ClientSecrets = new List<Secret>() { new Secret("6a297776-c6ae-49c6-8cae-e6ef10a92cf0".Sha256()) },
+                    RedirectUris = { "https://localhost:44376/signin-oidc" },
+                    PostLogoutRedirectUris = new List<string> { "https://localhost:44376/" },
                 },
             };
         }

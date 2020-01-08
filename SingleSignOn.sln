@@ -5,6 +5,10 @@ VisualStudioVersion = 16.0.29613.14
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SingleSignOn", "SingleSignOn\SingleSignOn.csproj", "{0639195E-703C-4D85-ABDA-1C9D40040946}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SingleSignOn.Mvc", "SingleSignOn.Mvc\SingleSignOn.Mvc.csproj", "{D62312E6-2AF4-485B-A2AA-9BDC0196ED72}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SingleSignOn.Blazor", "SingleSignOn.Blazor\SingleSignOn.Blazor.csproj", "{03A2397B-C55E-4F6F-8FEE-1802D6586AD0}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -15,6 +19,14 @@ Global
 		{0639195E-703C-4D85-ABDA-1C9D40040946}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{0639195E-703C-4D85-ABDA-1C9D40040946}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{0639195E-703C-4D85-ABDA-1C9D40040946}.Release|Any CPU.Build.0 = Release|Any CPU
+		{D62312E6-2AF4-485B-A2AA-9BDC0196ED72}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{D62312E6-2AF4-485B-A2AA-9BDC0196ED72}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{D62312E6-2AF4-485B-A2AA-9BDC0196ED72}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{D62312E6-2AF4-485B-A2AA-9BDC0196ED72}.Release|Any CPU.Build.0 = Release|Any CPU
+		{03A2397B-C55E-4F6F-8FEE-1802D6586AD0}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{03A2397B-C55E-4F6F-8FEE-1802D6586AD0}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{03A2397B-C55E-4F6F-8FEE-1802D6586AD0}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{03A2397B-C55E-4F6F-8FEE-1802D6586AD0}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
