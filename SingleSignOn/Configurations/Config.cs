@@ -67,8 +67,8 @@ namespace SingleSignOn.Configurations
                     Password = "Pa$$w0rd",
                     Claims =
                     {
+                        new Claim(JwtClaimTypes.Name, "Angular"),
                         new Claim(JwtClaimTypes.Email, "a@a.com"),
-                        new Claim(JwtClaimTypes.Name, "a@a.com"),
                         new Claim(JwtClaimTypes.Role, "Users"),
                     },
                 },
@@ -79,8 +79,8 @@ namespace SingleSignOn.Configurations
                     Password = "Pa$$w0rd",
                     Claims =
                     {
+                        new Claim(JwtClaimTypes.Name, "Blazor"),
                         new Claim(JwtClaimTypes.Email, "b@b.com"),
-                        new Claim(JwtClaimTypes.Name, "b@b.com"),
                         new Claim(JwtClaimTypes.Role, "Users"),
                     },
                 },
