@@ -1,6 +1,5 @@
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
-using Microsoft.AspNetCore.Http;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using SingleSignOn.Configurations;
@@ -12,11 +11,11 @@ namespace SingleSignOn
         public void ConfigureServices(IServiceCollection services)
         {
             services.AddIdentityServer()
+                .AddDeveloperSigningCredential()
                 .AddInMemoryIdentityResources(Config.GetIds())
                 .AddInMemoryApiResources(Config.GetApis())
                 .AddInMemoryClients(Config.GetClients())
-                .AddTestUsers(Config.GetTestUsers())
-                .AddDeveloperSigningCredential();
+                .AddTestUsers(Config.GetTestUsers());
             services.AddControllersWithViews();
             services.AddRazorPages(); 
         }

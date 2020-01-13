@@ -31,6 +31,12 @@ namespace SingleSignOn.Mvc
             {
                 options.Authority = "https://localhost:44328/";
                 options.ClientId = "73b933f9-821e-47df-866d-ef97d24c7506";
+
+                options.ResponseType = "code id_token";
+                options.Scope.Add("openid");
+                options.Scope.Add("profile");
+                options.SaveTokens = true;
+                options.ClientSecret = "73b933f9-821e-47df-866d-ef97d24c7506";
             });
         }
 

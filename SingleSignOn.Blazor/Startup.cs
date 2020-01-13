@@ -1,13 +1,7 @@
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
 using Microsoft.AspNetCore.Authentication.Cookies;
 using Microsoft.AspNetCore.Authentication.OpenIdConnect;
 using Microsoft.AspNetCore.Builder;
-using Microsoft.AspNetCore.Components;
 using Microsoft.AspNetCore.Hosting;
-using Microsoft.AspNetCore.HttpsPolicy;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
@@ -41,12 +35,14 @@ namespace SingleSignOn.Blazor
             {
                 options.Authority = "https://localhost:44328/";
                 options.ClientId = "6a297776-c6ae-49c6-8cae-e6ef10a92cf0";
-                //options.ResponseType = "code id_token";
-                //options.Scope.Add("openid");
-                //options.Scope.Add("profile");
-                //options.Scope.Add("email");
-                //options.SaveTokens = true;
-                //options.GetClaimsFromUserInfoEndpoint = true;
+
+                options.ResponseType = "code id_token";
+                options.Scope.Add("openid");
+                options.Scope.Add("profile");
+                options.Scope.Add("email");
+                options.SaveTokens = true;
+                options.ClientSecret = "6a297776-c6ae-49c6-8cae-e6ef10a92cf0";
+                options.GetClaimsFromUserInfoEndpoint = true;
             });
 
             services.AddSingleton<WeatherForecastService>();
