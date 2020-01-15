@@ -2,17 +2,27 @@
 
 @attribute [Authorize]
 
-<h1>Counter</h1>
+@using System.Security.Claims
 
-<p>Current count: @currentCount</p>
+@using Microsoft.AspNetCore.Http
+@inject IHttpContextAccessor HttpContextAccessor
 
-<button class="btn btn-primary" @onclick="IncrementCount">Click me</button>
+<hr />
+이름: @name  
+이메일: @email
+<hr />
 
 @code {
-    private int currentCount = 0;
-
-    private void IncrementCount()
+    private string name = "";
+    private string email = "";
+    protected override void OnInitialized()
     {
-        currentCount++;
+        // 로그인 되었다면, 
+        if (HttpContextAccessor.HttpContext.User.Identity.IsAuthenticated)
+        {
+            var id = HttpContextAccessor.HttpContext.User.Identity as ClaimsIdentity;
+            name = id.FindFirst("name")?.Value;
+            email = id.FindFirst("email")?.Value;
+        }
     }
 }
