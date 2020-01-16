@@ -25,6 +25,21 @@ namespace SingleSignOn.Configurations
             return new List<ApiResource>()
             { 
                 new ApiResource("SingleSignOn.Apis", "SSO API"),
+                new ApiResource 
+                { 
+                    Name = "My Web API", 
+                    DisplayName = "My Web API", 
+                    Description = "My Web API",
+                    UserClaims = new List<string>{ "Guests" },
+                    ApiSecrets = new List<Secret>{ new Secret("AbCdEfGhIjK".Sha256()) },
+                    Scopes = new List<Scope>
+                    { 
+                        new Scope("My Web API.Create"),
+                        new Scope("My Web API.Read"),
+                        new Scope("My Web API.Update"),
+                        new Scope("My Web API.Delete"),
+                    },
+                },
                 // TODO: 
             };
         }
