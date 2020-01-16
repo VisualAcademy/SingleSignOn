@@ -55,9 +55,11 @@ namespace SingleSignOn
 
         private async Task CreateBuiltInUsersAndRoles(IServiceProvider serviceProvider)
         {
+            //[0] DbContext 개체 생성
             var dbContext = serviceProvider.GetRequiredService<SingleSignOnDbContext>();
-            dbContext.Database.EnsureCreated(); // 데이터베이스가 만들어져 있는지 확인
+            dbContext.Database.EnsureCreated(); // 데이터베이스가 생성되어 있는지 확인
 
+            // 기본 내장 사용자 및 역할이 하나도 없으면(즉, 처음 데이터베이스 생성이라면)
             if (!dbContext.Users.Any() && !dbContext.Roles.Any())
             {
                 string domainName = "dul.me";
@@ -67,7 +69,6 @@ namespace SingleSignOn
                 //[1][3] ('Users', '일반 사용자 그룹', 'Group', '일반 사용자 그룹 계정')
                 //[1][4] ('Guests', '관리자 그룹', 'Group', '게스트 사용자 그룹 계정')
                 var roleManager = serviceProvider.GetRequiredService<RoleManager<IdentityRole>>();
-                var userManager = serviceProvider.GetRequiredService<UserManager<ApplicationUser>>();
                 string[] roleNames = { "Administrators", "Everyone", "Users", "Guests" };
                 IdentityResult identityResult;
                 foreach (var roleName in roleNames)
@@ -83,6 +84,7 @@ namespace SingleSignOn
                 //[2] Users
                 //[2][1] Administrator
                 // ('Administrator', '관리자', 'User', '응용 프로그램을 총 관리하는 사용자 계정')
+                var userManager = serviceProvider.GetRequiredService<UserManager<ApplicationUser>>();
                 ApplicationUser administrator = await userManager.FindByEmailAsync($"administrator@{domainName}");
                 if (administrator == null)
                 {
