@@ -90,7 +90,7 @@ namespace SingleSignOn
                 {
                     administrator = new ApplicationUser()
                     {
-                        UserName = "Administrator",
+                        UserName = $"administrator@{domainName}",
                         Email = $"administrator@{domainName}",
                     };
                     await userManager.CreateAsync(administrator, "Pa$$w0rd");

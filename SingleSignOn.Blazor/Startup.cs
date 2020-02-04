@@ -28,21 +28,21 @@ namespace SingleSignOn.Blazor
 
             services.AddAuthentication(options =>
             {
-                options.DefaultScheme = CookieAuthenticationDefaults.AuthenticationScheme;
-                options.DefaultChallengeScheme = OpenIdConnectDefaults.AuthenticationScheme;
+                options.DefaultScheme = CookieAuthenticationDefaults.AuthenticationScheme; // "Cookies"
+                options.DefaultChallengeScheme = OpenIdConnectDefaults.AuthenticationScheme; // "oidc"
             })
-            .AddCookie(CookieAuthenticationDefaults.AuthenticationScheme)
-            .AddOpenIdConnect(OpenIdConnectDefaults.AuthenticationScheme, options =>
+            .AddCookie(CookieAuthenticationDefaults.AuthenticationScheme) // "Cookies"
+            .AddOpenIdConnect(OpenIdConnectDefaults.AuthenticationScheme, options => // "oidc"
             {
-                options.Authority = "https://localhost:44328/";
-                options.ClientId = "6a297776-c6ae-49c6-8cae-e6ef10a92cf0";
+                options.Authority = "https://localhost:44328/"; // Identity Server URI
+                options.ClientId = "6a297776-c6ae-49c6-8cae-e6ef10a92cf0"; // "BlazorClient" 
 
                 options.ResponseType = "code id_token";
                 options.Scope.Add("openid");
                 options.Scope.Add("profile");
                 options.Scope.Add("email");
                 options.SaveTokens = true;
-                options.ClientSecret = "6a297776-c6ae-49c6-8cae-e6ef10a92cf0";
+                options.ClientSecret = "6a297776-c6ae-49c6-8cae-e6ef10a92cf0"; // "secret"
                 options.GetClaimsFromUserInfoEndpoint = true;
             });
 

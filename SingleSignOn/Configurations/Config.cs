@@ -17,6 +17,7 @@ namespace SingleSignOn.Configurations
                 new IdentityResources.Profile(),
                 new IdentityResources.Email(),
                 // TODO: 
+                new IdentityResource("CustomerInfo", new [] { "Customer" })
             };
         }
 
@@ -50,7 +51,7 @@ namespace SingleSignOn.Configurations
             {
                 new Client
                 {
-                    ClientId = "73b933f9-821e-47df-866d-ef97d24c7506",
+                    ClientId = "73b933f9-821e-47df-866d-ef97d24c7506", // "MvcClient"
                     ClientName = "SingleSignOn.Mvc",
                     //AllowedGrantTypes = GrantTypes.Implicit,
                     AllowedGrantTypes = GrantTypes.Hybrid,
@@ -61,10 +62,10 @@ namespace SingleSignOn.Configurations
                 },
                 new Client
                 {
-                    ClientId = "6a297776-c6ae-49c6-8cae-e6ef10a92cf0",
+                    ClientId = "6a297776-c6ae-49c6-8cae-e6ef10a92cf0", // "BlazorClient" 
                     ClientName = "SingleSignOn.Blazor",
                     //AllowedGrantTypes = GrantTypes.Implicit,
-                    AllowedGrantTypes = GrantTypes.Hybrid,
+                    AllowedGrantTypes = GrantTypes.Hybrid, // WorkFlow
                     AllowedScopes = { "openid", "profile", IdentityServerConstants.StandardScopes.Email },
                     ClientSecrets = new List<Secret>() { new Secret("6a297776-c6ae-49c6-8cae-e6ef10a92cf0".Sha256()) },
                     RedirectUris = { "https://localhost:44376/signin-oidc" },
@@ -88,6 +89,7 @@ namespace SingleSignOn.Configurations
                         new Claim(JwtClaimTypes.Name, "Angular"),
                         new Claim(JwtClaimTypes.Email, "a@a.com"),
                         new Claim(JwtClaimTypes.Role, "Users"),
+                        new Claim("website", "http://angular.dul.me"),
                     },
                 },
                 new TestUser
@@ -100,6 +102,7 @@ namespace SingleSignOn.Configurations
                         new Claim(JwtClaimTypes.Name, "Blazor"),
                         new Claim(JwtClaimTypes.Email, "b@b.com"),
                         new Claim(JwtClaimTypes.Role, "Users"),
+                        new Claim("website", "http://www.dotnetnote.com"),
                     },
                 },
             };
