@@ -9,6 +9,9 @@ namespace SingleSignOn.Configurations
 {
     public static class Config
     {
+        /// <summary>
+        /// Web, Blazor
+        /// </summary>
         public static IEnumerable<IdentityResource> GetIds()
         { 
             return new List<IdentityResource>()
@@ -21,6 +24,9 @@ namespace SingleSignOn.Configurations
             };
         }
 
+        /// <summary>
+        /// Web API
+        /// </summary>
         public static IEnumerable<ApiResource> GetApis()
         {
             return new List<ApiResource>()
@@ -49,17 +55,28 @@ namespace SingleSignOn.Configurations
         {
             return new Client[]
             {
+                // MVC 프로젝트
                 new Client
                 {
+                    // MVC 프로젝트의 GUID 값과 일치하는 Guid.NewGuid().ToString() 값 
                     ClientId = "73b933f9-821e-47df-866d-ef97d24c7506", // "MvcClient"
+
                     ClientName = "SingleSignOn.Mvc",
+
                     //AllowedGrantTypes = GrantTypes.Implicit,
                     AllowedGrantTypes = GrantTypes.Hybrid,
+
                     AllowedScopes = { "openid", "profile", IdentityServerConstants.StandardScopes.Email },
+                    
                     ClientSecrets = new List<Secret>() { new Secret("73b933f9-821e-47df-866d-ef97d24c7506".Sha256()) },
+                    
+                    // 로그인 후 원래 호출한 사이트의 어느 페이지(링크, 라우트)로 이동할건지
                     RedirectUris = { "https://localhost:44302/signin-oidc" },
+
+                    // 로그아웃 후 원래 호출한 사이트의 어느 페이지로 이동할건지
                     PostLogoutRedirectUris = new List<string> { "https://localhost:44302/" },
                 },
+                // Blazor 프로젝트
                 new Client
                 {
                     ClientId = "6a297776-c6ae-49c6-8cae-e6ef10a92cf0", // "BlazorClient" 

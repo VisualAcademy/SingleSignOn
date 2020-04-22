@@ -16,12 +16,14 @@ namespace SingleSignOn
     {
         public void ConfigureServices(IServiceCollection services)
         {
+            // IdentityServer4 µî·Ï
             services.AddIdentityServer()
                 .AddDeveloperSigningCredential()
                 .AddInMemoryIdentityResources(Config.GetIds())
                 .AddInMemoryApiResources(Config.GetApis())
                 .AddInMemoryClients(Config.GetClients())
                 .AddTestUsers(Config.GetTestUsers());
+
             services.AddControllersWithViews();
             services.AddRazorPages();
         }
