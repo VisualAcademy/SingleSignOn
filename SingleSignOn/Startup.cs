@@ -18,11 +18,11 @@ namespace SingleSignOn
         {
             // IdentityServer4 등록 후 ".well-known/openid-configuration" 경로 확인
             services.AddIdentityServer()
-                .AddDeveloperSigningCredential()
                 .AddInMemoryIdentityResources(Config.GetIds())
                 .AddInMemoryApiResources(Config.GetApis())
                 .AddInMemoryClients(Config.GetClients())
-                .AddTestUsers(Config.GetTestUsers());
+                .AddTestUsers(Config.GetTestUsers())
+                .AddDeveloperSigningCredential();
 
             services.AddControllersWithViews();
             services.AddRazorPages();
