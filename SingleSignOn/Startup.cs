@@ -16,7 +16,7 @@ namespace SingleSignOn
     {
         public void ConfigureServices(IServiceCollection services)
         {
-            // IdentityServer4 등록
+            // IdentityServer4 등록 후 ".well-known/openid-configuration" 경로 확인
             services.AddIdentityServer()
                 .AddDeveloperSigningCredential()
                 .AddInMemoryIdentityResources(Config.GetIds())
