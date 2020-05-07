@@ -11,7 +11,8 @@ namespace SingleSignOn.Blazor
         {
             if (!HttpContext.User.Identity.IsAuthenticated)
             {
-                await HttpContext.ChallengeAsync(OpenIdConnectDefaults.AuthenticationScheme);
+                await HttpContext.ChallengeAsync(
+                    OpenIdConnectDefaults.AuthenticationScheme);
             }
             else
             {
