@@ -34,7 +34,9 @@ namespace SingleSignOn.Blazor
             .AddCookie(CookieAuthenticationDefaults.AuthenticationScheme) // "Cookies"
             .AddOpenIdConnect(OpenIdConnectDefaults.AuthenticationScheme, options => // "oidc"
             {
-                options.Authority = "https://localhost:44328/"; // Identity Server URI
+                // 다음 Authority 속성은 SSO 프로젝트의 로컬 또는 실제 URL 지정
+                //options.Authority = "https://localhost:44328/"; // Identity Server URI
+                options.Authority = "https://localhost:5001/"; // Identity Server URI
                 options.ClientId = "6a297776-c6ae-49c6-8cae-e6ef10a92cf0"; // "BlazorClient" 
 
                 options.ResponseType = "code id_token";

@@ -32,7 +32,8 @@
                 <li class="nav-item px-3">
                     <NavLink class="nav-link" href="LogoutSso">
                         <span class="oi oi-list-rich" aria-hidden="true"></span> 
-                        Logout(@context.User.Claims.FirstOrDefault(c => c.Type == "name")?.Value)
+                        Logout(@context.User.Claims.FirstOrDefault(
+                              c => c.Type == "name")?.Value)
                     </NavLink>
                 </li>
             </Authorized>
